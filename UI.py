@@ -5,12 +5,12 @@ import os
 from PIL import Image, ImageTk
 import cv2
 
-## Estetica de la interfaz
+## Type of interface
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
-## Manejo de las diferentes ventanas que se crean - Se diseña para que se remplazen y no se abran simultaneamente.
+## Creating different tabs.
 class Main(ctk.CTk):
 
     def __init__(self):
@@ -39,7 +39,6 @@ class Main(ctk.CTk):
         frame = self.CTkFrame[cont]
         frame.tkraise()
 
-## Inicio de Sesion - Interfaz - Funcionalidad
 
 class ArkangelAI(ctk.CTkFrame):
 
@@ -48,8 +47,7 @@ class ArkangelAI(ctk.CTkFrame):
         ctk.CTkFrame.__init__(self, parent)
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "Images")
-        self.FinisTC = ctk.CTkImage(Image.open(os.path.join(image_path, "logo.png")),size=(600, 200))
-
+        self.logo = ctk.CTkImage(Image.open(os.path.join(image_path, "logo.png")),size=(600, 200))
         self.controller = controller
 
 ## Top Frame
@@ -57,7 +55,7 @@ class ArkangelAI(ctk.CTkFrame):
         top_frame.pack(expand=True, fill='both')
 
 
-        label = ctk.CTkLabel(self, text="", image=self.FinisTC)
+        label = ctk.CTkLabel(self, text="", image=self.logo, bg_color="black")
         label.pack(pady=12, padx=10)
 
         label1 = ctk.CTkLabel(self, text="Emotions Detector App", font=("Perpetua", 18, "bold"))
